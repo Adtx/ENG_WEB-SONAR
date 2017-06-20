@@ -1,3 +1,3 @@
 class ReadingSerializer < ActiveModel::Serializer
-  attributes :id, :noise, :sensor_id
+  attributes :id, :noise, :sensor_id, :timestamp
 end

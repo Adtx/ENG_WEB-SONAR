@@ -12,7 +12,7 @@ class ReadingsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create reading" do
     assert_difference('Reading.count') do
-      post readings_url, params: { reading: { noise: @reading.noise, sensor_id: @reading.sensor_id } }, as: :json
+      post readings_url, params: { reading: { noise: @reading.noise, sensor_id: @reading.sensor_id, timestamp: @reading.timestamp } }, as: :json
     end
 
     assert_response 201
@@ -24,7 +24,7 @@ class ReadingsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update reading" do
-    patch reading_url(@reading), params: { reading: { noise: @reading.noise, sensor_id: @reading.sensor_id } }, as: :json
+    patch reading_url(@reading), params: { reading: { noise: @reading.noise, sensor_id: @reading.sensor_id, timestamp: @reading.timestamp } }, as: :json
     assert_response 200
   end
 

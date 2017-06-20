@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170620120028) do
+ActiveRecord::Schema.define(version: 20170620144617) do
 
   create_table "groups", force: :cascade do |t|
     t.string "location"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20170620120028) do
   create_table "readings", force: :cascade do |t|
     t.integer "noise"
     t.integer "sensor_id"
+    t.datetime "timestamp"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

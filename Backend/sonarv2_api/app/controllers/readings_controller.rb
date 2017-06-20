@@ -46,6 +46,6 @@ class ReadingsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def reading_params
-      params.require(:reading).permit(:noise, :sensor_id)
+      params.require(:reading).permit(:noise, :sensor_id, :timestamp)
     end
 end

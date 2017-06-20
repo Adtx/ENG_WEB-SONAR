@@ -3,7 +3,9 @@
 one:
   noise: 1
   sensor_id: 1
+  timestamp: 2017-06-20 15:46:17
 
 two:
   noise: 1
   sensor_id: 1
+  timestamp: 2017-06-20 15:46:17

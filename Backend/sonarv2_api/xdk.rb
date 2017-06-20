@@ -37,12 +37,14 @@ class XDK
 			loop {
 				value = rand(NOISE_RANGE).to_s
 				timestamp = Time.now.strftime("%Y-%m-%d %H:%M:%S")
+				puts timestamp
 
 				options = {
 				  body: {
 				    reading: { # your resource
 				      sensor_id: @id,
 				      noise: value, # your columns/data
+				      timestamp: timestamp
 				    }
 				  }
 				}
