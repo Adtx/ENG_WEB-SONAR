@@ -1,0 +1,245 @@
+<div class="main-content">
+    <div class="container-fluid">
+        
+
+        <div class="row">
+
+            <div class="col-md-9">
+                <div class="card" [@card2014sales] >
+                    <div class="header">
+                        <ul role="tablist" class="nav nav-tabs">
+                        <!--<li role="presentation" class="active">
+                            <a href="#graph" data-toggle="tab"><i class="pe-7s-graph"></i> Gráfico</a>
+                        </li>-->
+                        <li role="presentation" class="active">
+                            <a href="#readings" data-toggle="tab"><i class="fa fa-table"></i> Leituras</a>
+                        </li>
+                        <!--<li>
+                            <a href="#settings" data-toggle="tab"><i class="fa fa-cog"></i> Propriedades</a>
+                        </li>-->
+                    </ul>
+                    </div>
+                    <!-- tabs with icons -->
+                    
+
+                   
+                    <div class="content">
+                        <div class="tab-content">
+
+                            <!--<div id="graph" class="tab-pane active">
+                                <div id="chartActivity" class="ct-chart"></div>
+                                <div class="footer">
+                                    <div class="legend">
+                                        <i class="fa fa-circle text-info"></i> Sensor 1
+                                        <i class="fa fa-circle text-danger"></i> Sensor 2
+                                    </div>
+                                    <hr>
+                                    <div class="stats">
+                                        <i class="fa fa-info-circle"></i> Valores expressos em decibéis (dB)
+                                    </div>
+                                </div>
+                            </div>-->
+
+                            <div id="readings" class="tab-pane active">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-center">Id</th>
+                                                <th>Grupo</th>
+                                                <th>Valor</th>
+                                                <th style="color:white">SPACE</th>
+                                                <th >Data</th>
+                                                <th >Localização</th>
+                                                <!--<th class="text-right">Ações</th>-->
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                             <tr *ngFor="let sensor of sensors">
+                                                <td class="text-center">{{sensor.id}}</td>
+                                                <td>{{sensor.title}}</td>
+                                                <td>11</td>
+                                                <td></td>
+                                                <td >09:25:19 (12/05)</td>
+                                                <td >41.5599005, -8.3988118</td>
+                                                <!--<td class="td-actions text-right">
+                                                    <button type="button" rel="tooltip" title="Editar" class="btn btn-success btn-simple btn-xs">
+                                                        <i class="fa fa-edit"></i>
+                                                    </button>
+                                                    <button type="button" rel="tooltip" title="Remover" class="btn btn-danger btn-simple btn-xs">
+                                                        <i class="fa fa-times"></i>
+                                                    </button>
+                                                </td>-->
+                                            </tr>
+                                            <!--<tr>
+                                                <td class="text-center">1</td>
+                                                <td>-</td>
+                                                <td>42</td>
+                                                <td>09:25:19 (12/05)</td>
+                                                <td class="text-right">&euro; 99,225</td>
+                                                <td class="td-actions text-right">
+                                                    <button type="button" rel="tooltip" title="Editar" class="btn btn-success btn-simple btn-xs">
+                                                        <i class="fa fa-edit"></i>
+                                                    </button>
+                                                    <button type="button" rel="tooltip" title="Remover" class="btn btn-danger btn-simple btn-xs">
+                                                        <i class="fa fa-times"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center">2</td>
+                                                <td>-</td>
+                                                <td>36</td>
+                                                <td>09:25:19</td>
+                                                <td class="text-right">&euro; 89,241</td>
+                                                <td class="td-actions text-right">
+                                                    <button type="button" rel="tooltip" title="Editar" class="btn btn-success btn-simple btn-xs">
+                                                        <i class="fa fa-edit"></i>
+                                                    </button>
+                                                    <button type="button" rel="tooltip" title="Remover" class="btn btn-danger btn-simple btn-xs">
+                                                        <i class="fa fa-times"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center">3</td>
+                                                <td>-</td>
+                                                <td>71</td>
+                                                <td>09:25:19</td>
+                                                <td class="text-right">&euro; 92,144</td>
+                                                <td class="td-actions text-right">
+                                                    <button type="button" rel="tooltip" title="Editar" class="btn btn-success btn-simple btn-xs">
+                                                        <i class="fa fa-edit"></i>
+                                                    </button>
+                                                    <button type="button" rel="tooltip" title="Remover" class="btn btn-danger btn-simple btn-xs">
+                                                        <i class="fa fa-times"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center">4</td>
+                                                <td>Grupo da Sé</td>
+                                                <td>47</td>
+                                                <td>09:25:17</td>
+                                                <td class="text-right">&euro; 49,990</td>
+                                                <td class="td-actions text-right">
+                                                    <button type="button" rel="tooltip" title="Editar" class="btn btn-success btn-simple btn-xs">
+                                                        <i class="fa fa-edit"></i>
+                                                    </button>
+                                                    <button type="button" rel="tooltip" title="Remover" class="btn btn-danger btn-simple btn-xs">
+                                                        <i class="fa fa-times"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center">5</td>
+                                                <td>Grupo da Sé</td>
+                                                <td>62</td>
+                                                <td>09:25:17</td>
+                                                <td class="text-right">&euro; 69,201</td>
+                                                <td class="td-actions text-right">
+                                                    <button type="button" rel="tooltip" title="Editar" class="btn btn-success btn-simple btn-xs">
+                                                        <i class="fa fa-edit"></i>
+                                                    </button>
+                                                    <button type="button" rel="tooltip" title="Remover" class="btn btn-danger btn-simple btn-xs">
+                                                        <i class="fa fa-times"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center">1</td>
+                                                <td>-</td>
+                                                <td>42</td>
+                                                <td>09:25:16 (12/05)</td>
+                                                <td class="text-right">&euro; 99,225</td>
+                                                <td class="td-actions text-right">
+                                                    <button type="button" rel="tooltip" title="Editar" class="btn btn-success btn-simple btn-xs">
+                                                        <i class="fa fa-edit"></i>
+                                                    </button>
+                                                    <button type="button" rel="tooltip" title="Remover" class="btn btn-danger btn-simple btn-xs">
+                                                        <i class="fa fa-times"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center">2</td>
+                                                <td>-</td>
+                                                <td>36</td>
+                                                <td>09:25:16 (12/05)</td>
+                                                <td class="text-right">&euro; 89,241</td>
+                                                <td class="td-actions text-right">
+                                                    <button type="button" rel="tooltip" title="Editar" class="btn btn-success btn-simple btn-xs">
+                                                        <i class="fa fa-edit"></i>
+                                                    </button>
+                                                    <button type="button" rel="tooltip" title="Remover" class="btn btn-danger btn-simple btn-xs">
+                                                        <i class="fa fa-times"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center">3</td>
+                                                <td>-</td>
+                                                <td>71</td>
+                                                <td>09:25:16 (12/05)</td>
+                                                <td class="text-right">&euro; 92,144</td>
+                                                <td class="td-actions text-right">
+                                                    <button type="button" rel="tooltip" title="Editar" class="btn btn-success btn-simple btn-xs">
+                                                        <i class="fa fa-edit"></i>
+                                                    </button>
+                                                    <button type="button" rel="tooltip" title="Remover" class="btn btn-danger btn-simple btn-xs">
+                                                        <i class="fa fa-times"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>-->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <!--<div id="settings" class="tab-pane">
+                                
+                            </div>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-3">
+                <div class="card" [@cardtasks]>
+                    <div class="header">
+                        <h4 class="title">Sensores</h4>
+                    </div>
+                    <div class="content">
+                        <div class="table-full-width">
+                            <table class="table">
+                                <tbody>
+                                    <tr *ngFor="let sensor of sensors">
+                                        <td><a href="#">{{sensor.id}} ({{sensor.title}})</a></td>
+                                        <td class="td-actions text-right">
+                                            <button type="button" rel="tooltip" title="Editar" class="btn btn-info btn-simple btn-xs">
+                                                <a routerLink="../properties/{{sensor.title}}/{{sensor.id}}">
+                                                <i class="fa fa-edit"></i></a>
+                                            </button>
+                                            <button type="button" rel="tooltip" title="Mapa" class="btn btn-danger btn-simple btn-xs">
+                                                <a routerLink="../maps" style="color:red">
+                                                <i class="fa fa-map-marker"></i></a>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="footer">
+                            <hr>
+                            <div class="stats">
+                                <i class="fa fa-history"></i> Atualizado há 3 minutos
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

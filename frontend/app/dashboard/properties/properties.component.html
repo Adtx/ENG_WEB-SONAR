@@ -1,0 +1,131 @@
+<div class="main-content" >
+    <div class="container-fluid">
+        <div class="card"  *ngIf="selectedSensorId!='all'">
+            <div class="header">
+                <h4 class="title">Editar propriedades</h4>
+                <p class="category">
+                    {{ selectedSensorId=='all' ? 'Todos os sensores' : 'Sensor&#x0003A; ' + selectedSensorId  }}
+                    {{ selectedSensorGroup=='all' ? '' : '(Grupo&#x0003A; ' + selectedSensorGroup + ')' }}
+                </p>
+            </div>
+            <div class="content">
+                <form>                    
+                    <div class="row">
+                        <!--<div class="col-md-4">
+                            <div class="form-group">
+                                <label>Latência</label>
+                                <input type="text" class="form-control" placeholder="Latência" value="{{this.selectedSensor.latency}}">
+                            </div>
+                        </div>-->
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Mínimo</label>
+                                <input type="text" class="form-control" placeholder="Mínimo" value="{{this.selectedSensor.minimum}}">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Máximo</label>
+                                <input type="text" class="form-control" placeholder="Máximo" value="{{this.selectedSensor.maximum}}">
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-info btn-fill">Atualizar sensor</button>
+                    <div class="clearfix"></div>
+                </form>
+            </div>
+        </div>
+
+
+        <div class="card"  *ngIf="selectedSensorGroup!='all'">
+            <div class="header">
+                <h4 class="title">Lista de sensores</h4>
+                <p class="category">Grupo&#x0003A; {{selectedSensorGroup}}</p>
+            </div>
+                <div class="content">
+                    <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Grupo</th>
+                                <th class="text-right">Latência</th>
+                                <th class="text-right">Mínimo</th>
+                                <th class="text-right">Máximo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let sensor of sensors">
+                                <td>{{sensor.id}}</td>
+                                <td>{{sensor.group}}</td>
+                                <td class="text-right">{{sensor.latency}}</td>
+                                <td class="text-right">{{sensor.minimum}}</td>
+                                <td class="text-right">{{sensor.maximum}}</td>
+                                <td class="td-actions text-right">
+                                    <button type="button" rel="tooltip" title="Editar" class="btn btn-success btn-simple btn-xs">
+                                        <i class="fa fa-edit"></i>
+                                    </button>
+                                    <button type="button" rel="tooltip" title="Remover" class="btn btn-danger btn-simple btn-xs">
+                                        <i class="fa fa-times"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="card">
+            <div class="header">
+                <h4 class="title">Lista de sensores</h4>
+                <p class="category">Todos os sensores</p>
+            </div>
+                <div class="content">
+                    <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Grupo</th>
+                                <th class="text-right">Latência</th>
+                                <th class="text-right">Mínimo</th>
+                                <th class="text-right">Máximo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let sensor of sensors">
+                                <td>{{sensor.id}}</td>
+                                <td>{{sensor.group}}</td>
+                                <td class="text-right">{{sensor.latency}}</td>
+                                <td class="text-right">{{sensor.minimum}}</td>
+                                <td class="text-right">{{sensor.maximum}}</td>
+                                <td class="td-actions text-right">
+                                    <button type="button" rel="tooltip" title="Editar" class="btn btn-success btn-simple btn-xs">
+                                        <i class="fa fa-edit"></i>
+                                    </button>
+                                    <button type="button" rel="tooltip" title="Remover" class="btn btn-danger btn-simple btn-xs">
+                                        <i class="fa fa-times"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!--<hr>
+            <div class="text-center">
+                <button href="#" class="btn btn-simple"><i class="fa fa-facebook-square"></i></button>
+                <button href="#" class="btn btn-simple"><i class="fa fa-twitter"></i></button>
+                <button href="#" class="btn btn-simple"><i class="fa fa-google-plus-square"></i></button>
+            </div>-->
+        </div>
+    </div>
+</div>
+
+
+            
+
+        
