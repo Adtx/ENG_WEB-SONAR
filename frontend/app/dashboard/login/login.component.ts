@@ -1,7 +1,8 @@
 import { Component, EventEmitter ,OnInit, Output} from '@angular/core';
 import {NgForm, NgModel} from '@angular/forms';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { Service } from '../../shared/service'
+import { Service } from '../../shared/service';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
 
 @Component({
     selector: 'login-cmp',
@@ -143,25 +144,24 @@ import { Service } from '../../shared/service'
 export class LoginComponent{
     user: string = '';
     password: string = '';
-    //@Output() signIn = new EventEmitter<boolean>();
 
-    constructor(/*private service: Service,*/
+    constructor(private http: Http,
         private route: ActivatedRoute,
         private router: Router
     ) {}
 
     login(): void{
         
-        localStorage.setItem('Joao', 'Password1');
-        localStorage.setItem('user', 'password');
-        localStorage.setItem('adriano', '123');
-
-        if (localStorage.getItem(this.user) != this.password)
-            alert("Nome de utilizador ou password incorretos!");
-        else {
-            //this.signIn.emit();
-            Service.signedIn = true;
-            this.router.navigate(['dashboard']);
-        }
+        this.http.get(`http://localhost:7000/users/${this.user}`)
+            .map((response: Response) => <any>response.json())
+            .subscribe(userCredentials => {
+                if (!userCredentials || this.password != userCredentials.password){
+                    alert("Nome de utilizador ou password incorretos!");
+                }
+                else {
+                    Service.signedIn = true;
+                    this.router.navigate(['dashboard']);
+                }
+            });
     }
 }
