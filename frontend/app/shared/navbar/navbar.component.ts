@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ROUTES } from '../.././sidebar/sidebar-routes.config';
 import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
+import { Service } from '../../shared/service'
+import { Router, ActivatedRoute, Params } from '@angular/router';
 
 @Component({
     moduleId: module.id,
@@ -14,7 +16,7 @@ export class NavbarComponent implements OnInit{
     notificationsNumber: number;
     notifications: string[];
 
-    constructor(location:Location) {
+    constructor(location:Location, private router: Router) {
         this.location = location;
         this.notificationsNumber = 7;
     }
@@ -33,5 +35,10 @@ export class NavbarComponent implements OnInit{
             }
         }
         return 'Dashboard';
+    }
+
+    func1() {
+        Service.signedIn = false;
+        this.router.navigate(['login']);
     }
 }
