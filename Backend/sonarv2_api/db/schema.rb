@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170621101233) do
+ActiveRecord::Schema.define(version: 20170621145838) do
 
   create_table "readings", force: :cascade do |t|
     t.integer "noise"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20170621101233) do
   end
 
   create_table "sensors", force: :cascade do |t|
+    t.integer "new_id"
     t.string "location"
     t.integer "frequency"
     t.integer "minimumNoise"
