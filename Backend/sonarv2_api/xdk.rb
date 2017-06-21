@@ -16,9 +16,9 @@ class XDK
 		@position = new_position
     end
 
-	def initialize(id,frequency, minNoise, maxNoise, group_name, latitude, longitude)
-		@id = id
-		@position = nil
+	def initialize(id,location,frequency, minNoise, maxNoise, group_name, latitude, longitude)
+		@new_id = new_id
+		@location = location
 		@noise_thread = nil
 		@frequency = frequency 
 		@minNoise = minNoise
@@ -35,8 +35,8 @@ class XDK
 		options = {
 				  body: {
 				    sensor: { # your resource
-				    	id: @id,
-				      location: @position,
+				    	new_id: @new_id,
+				      location: @location,
 				      frequency: @frequency, # your columns/data
 				      minimumNoise: @minNoise,
 				      maximumNoise: @maxNoise,
@@ -47,7 +47,7 @@ class XDK
 				  }
 				}
 
-		HTTParty.post('http://localhost:3000/sensors', options)
+		HTTParty.post('http://localhost:7000/sensors', options)
 	end
 
 	def stop_sensor()
@@ -64,14 +64,14 @@ class XDK
 				options = {
 				  body: {
 				    reading: { # your resource
-				      sensor_id: @id,
+				      sensor_id: @new_id,
 				      noise: value, # your columns/data
 				      timestamp: timestamp
 				    }
 				  }
 				}
 
-				HTTParty.post('http://localhost:3000/readings', options)
+				HTTParty.post('http://localhost:7000/readings', options)
 
 				sleep(sleep_time)
 			}

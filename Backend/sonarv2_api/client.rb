@@ -1,7 +1,7 @@
 require_relative 'xdk'
 
 print 'ID: '
-id = gets.chomp
+new_id = gets.chomp.to_i
 
 print 'INTERVALO: '
 sensor_interval = gets.chomp.to_i
@@ -18,7 +18,10 @@ dentroOuFora = gets.chomp.to_i
 if(dentroOuFora == 'interior') 
   latitude = nil
   longitude = nil
+  print 'LOCALIZAÇÃO: '
+  location = gets.chomp.to_i
 else 
+  location = nil
   latitude = rand(-200.000..200.000)
   longitude = rand(-200.000..200.000)
 end
@@ -27,7 +30,7 @@ print 'NOME DO GRUPO: '
 group_name = gets.chomp
 
 
-xdk = XDK.new(id, sensor_interval, minNoise, maxNoise, group_name, latitude, longitude)
+xdk = XDK.new(new_id, location, sensor_interval, minNoise, maxNoise, group_name, latitude, longitude)
 
 xdk.start(sensor_interval)
 
