@@ -5,7 +5,9 @@ class CreateSensors < ActiveRecord::Migration[5.1]
       t.integer :frequency
       t.integer :minimumNoise
       t.integer :maximumNoise
-      t.integer :group_id
+      t.float :latitude
+      t.float :longitude
+      t.string :group_name
 
       t.timestamps
     end

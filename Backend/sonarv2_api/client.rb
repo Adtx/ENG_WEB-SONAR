@@ -6,12 +6,28 @@ id = gets.chomp
 print 'INTERVALO: '
 sensor_interval = gets.chomp.to_i
 
+print 'MIN: '
+minNoise = gets.chomp.to_i
 
-minNoise = rand(1..10)
-maxNoise = rand(11..20)
-group_id = rand(1..10)
+print 'MAX: '
+maxNoise = gets.chomp.to_i
 
-xdk = XDK.new(id, sensor_interval, minNoise, maxNoise, group_id)
+print 'INTERIOR OU EXTERIOR: '
+dentroOuFora = gets.chomp.to_i
+
+if(dentroOuFora == 'interior') 
+  latitude = nil
+  longitude = nil
+else 
+  latitude = rand(-200.000..200.000)
+  longitude = rand(-200.000..200.000)
+end
+
+print 'NOME DO GRUPO: '
+group_name = gets.chomp
+
+
+xdk = XDK.new(id, sensor_interval, minNoise, maxNoise, group_name, latitude, longitude)
 
 xdk.start(sensor_interval)
 

@@ -46,6 +46,6 @@ class SensorsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def sensor_params
-      params.require(:sensor).permit(:location, :frequency, :minimumNoise, :maximumNoise, :group_id)
+      params.require(:sensor).permit(:location, :frequency, :minimumNoise, :maximumNoise, :latitude, :longitude, :group_name)
     end
 end

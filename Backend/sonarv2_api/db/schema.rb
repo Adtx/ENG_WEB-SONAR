@@ -10,14 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170620144617) do
-
-  create_table "groups", force: :cascade do |t|
-    t.string "location"
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+ActiveRecord::Schema.define(version: 20170621101233) do
 
   create_table "readings", force: :cascade do |t|
     t.integer "noise"
@@ -32,7 +25,9 @@ ActiveRecord::Schema.define(version: 20170620144617) do
     t.integer "frequency"
     t.integer "minimumNoise"
     t.integer "maximumNoise"
-    t.integer "group_id"
+    t.float "latitude"
+    t.float "longitude"
+    t.string "group_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
