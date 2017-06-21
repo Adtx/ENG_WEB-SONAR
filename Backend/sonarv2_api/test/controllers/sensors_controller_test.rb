@@ -12,7 +12,7 @@ class SensorsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create sensor" do
     assert_difference('Sensor.count') do
-      post sensors_url, params: { sensor: { frequency: @sensor.frequency, group_name: @sensor.group_name, latitude: @sensor.latitude, location: @sensor.location, longitude: @sensor.longitude, maximumNoise: @sensor.maximumNoise, minimumNoise: @sensor.minimumNoise } }, as: :json
+      post sensors_url, params: { sensor: { frequency: @sensor.frequency, group_name: @sensor.group_name, latitude: @sensor.latitude, location: @sensor.location, longitude: @sensor.longitude, maximumNoise: @sensor.maximumNoise, minimumNoise: @sensor.minimumNoise, new_id: @sensor.new_id } }, as: :json
     end
 
     assert_response 201
@@ -24,7 +24,7 @@ class SensorsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update sensor" do
-    patch sensor_url(@sensor), params: { sensor: { frequency: @sensor.frequency, group_name: @sensor.group_name, latitude: @sensor.latitude, location: @sensor.location, longitude: @sensor.longitude, maximumNoise: @sensor.maximumNoise, minimumNoise: @sensor.minimumNoise } }, as: :json
+    patch sensor_url(@sensor), params: { sensor: { frequency: @sensor.frequency, group_name: @sensor.group_name, latitude: @sensor.latitude, location: @sensor.location, longitude: @sensor.longitude, maximumNoise: @sensor.maximumNoise, minimumNoise: @sensor.minimumNoise, new_id: @sensor.new_id } }, as: :json
     assert_response 200
   end
 

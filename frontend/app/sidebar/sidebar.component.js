@@ -8,23 +8,24 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var sidebar_routes_config_1 = require('./sidebar-routes.config');
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var sidebar_routes_config_1 = require("./sidebar-routes.config");
 var SidebarComponent = (function () {
     function SidebarComponent() {
     }
     SidebarComponent.prototype.ngOnInit = function () {
         this.menuItems = sidebar_routes_config_1.ROUTES.filter(function (menuItem) { return menuItem; });
     };
-    SidebarComponent = __decorate([
-        core_1.Component({
-            moduleId: module.id,
-            selector: 'sidebar-cmp',
-            templateUrl: 'sidebar.component.html',
-        }), 
-        __metadata('design:paramtypes', [])
-    ], SidebarComponent);
     return SidebarComponent;
 }());
+SidebarComponent = __decorate([
+    core_1.Component({
+        moduleId: module.id,
+        selector: 'sidebar-cmp',
+        templateUrl: 'sidebar.component.html',
+    }),
+    __metadata("design:paramtypes", [])
+], SidebarComponent);
 exports.SidebarComponent = SidebarComponent;
 //# sourceMappingURL=sidebar.component.js.map

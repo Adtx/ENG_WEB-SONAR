@@ -98,6 +98,7 @@ export class HomeComponent implements OnInit{
 
 
     sensors: any[];
+    readings: any[];
     myMap = new Map<string, Sensor>();
 
 
@@ -116,8 +117,14 @@ export class HomeComponent implements OnInit{
 
         //this.sensors = this.sensorService.getCachedSensors();
 
+        /*this.sensorService.getSensorsRest()
+            .subscribe(sensors => this.sensors = sensors);*/
+
         this.sensorService.getSensorsRest()
             .subscribe(sensors => this.sensors = sensors);
+
+        this.sensorService.getReadingsRest()
+            .subscribe(readings => this.readings = readings.reverse());
     }
 
     getSensor(id: string): Sensor{

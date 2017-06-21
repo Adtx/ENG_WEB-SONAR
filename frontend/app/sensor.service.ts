@@ -27,8 +27,20 @@ export class SensorService {
         });
     }
 
-    getSensorsRest(): Observable<any[]>{
+    /*getSensorsRest(): Observable<any[]>{
        var res = this.http.get(`http://pcogdashboard.azurewebsites.net/api/DashboardsFetch/adriano/dash0`)
+            .map((response: Response) => <any[]>response.json());
+        return res;
+    }*/
+
+    getSensorsRest(): Observable<any[]>{
+       var res = this.http.get(`http://localhost:7000/sensors`)
+            .map((response: Response) => <any[]>response.json());
+        return res;
+    }
+
+    getReadingsRest(): Observable<any[]>{
+       var res = this.http.get(`http://localhost:7000/readings`)
             .map((response: Response) => <any[]>response.json());
         return res;
     }
