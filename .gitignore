@@ -1,0 +1,5 @@
+*.js
+*.js.map
+!systemjs.config.js
+!server.js
+frontend/node_modules/**

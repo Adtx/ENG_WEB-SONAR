@@ -1,5 +1,4 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.ROUTES = [
     { path: 'dashboard', title: 'Dashboard', icon: 'pe-7s-graph', class: '' },
     { path: 'properties/all/all', title: 'Propriedades', icon: 'pe-7s-note2', class: '' },

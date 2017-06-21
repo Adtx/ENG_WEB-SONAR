@@ -8,9 +8,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var sensor_service_1 = require("../../sensor.service");
+var core_1 = require('@angular/core');
+var sensor_service_1 = require('../../sensor.service');
 var MapsComponent = (function () {
     function MapsComponent(sensorService) {
         this.sensorService = sensorService;
@@ -52,27 +51,26 @@ var MapsComponent = (function () {
             }
         });
     };
+    MapsComponent = __decorate([
+        core_1.Component({
+            moduleId: module.id,
+            selector: 'maps-cmp',
+            templateUrl: 'maps.component.html',
+            animations: [
+                core_1.trigger('maps', [
+                    core_1.state('*', core_1.style({
+                        opacity: 1 })),
+                    core_1.transition('void => *', [
+                        core_1.style({ opacity: 0,
+                        }),
+                        core_1.animate('1s 0s ease-out')
+                    ])
+                ])
+            ]
+        }), 
+        __metadata('design:paramtypes', [sensor_service_1.SensorService])
+    ], MapsComponent);
     return MapsComponent;
 }());
-MapsComponent = __decorate([
-    core_1.Component({
-        moduleId: module.id,
-        selector: 'maps-cmp',
-        templateUrl: 'maps.component.html',
-        animations: [
-            core_1.trigger('maps', [
-                core_1.state('*', core_1.style({
-                    opacity: 1
-                })),
-                core_1.transition('void => *', [
-                    core_1.style({ opacity: 0,
-                    }),
-                    core_1.animate('1s 0s ease-out')
-                ])
-            ])
-        ]
-    }),
-    __metadata("design:paramtypes", [sensor_service_1.SensorService])
-], MapsComponent);
 exports.MapsComponent = MapsComponent;
 //# sourceMappingURL=maps.component.js.map

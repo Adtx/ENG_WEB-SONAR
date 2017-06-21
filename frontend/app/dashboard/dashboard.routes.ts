@@ -5,10 +5,11 @@ import { HomeComponent } from './home/home.component';
 import { PropertiesComponent } from './properties/properties.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { MapsComponent } from './maps/maps.component';
-
+import { LoginComponent } from './login/login.component';
 
 export const MODULE_ROUTES: Route[] =[
-    { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+    { path: '', redirectTo: 'login', pathMatch: 'full' },
+    { path: 'login', component: LoginComponent },
     { path: 'dashboard', component: HomeComponent },
     { path: 'properties/:group/:id', component: PropertiesComponent },
     { path: 'properties', redirectTo: 'properties/all/all', pathMatch: 'full' },
@@ -21,5 +22,6 @@ export const MODULE_COMPONENTS = [
     HomeComponent,
     PropertiesComponent,
     MapsComponent,
-    NotificationsComponent
+    NotificationsComponent,
+    LoginComponent
 ]

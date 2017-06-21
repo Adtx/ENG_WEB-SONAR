@@ -1,5 +1,4 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.SENSORS = [
     { id: 'Café Juno', group: 'Centro histórico', latency: 4, minimum: 42, maximum: 107 },
     { id: 'Sé Café', group: 'Centro histórico', latency: 5, minimum: 25, maximum: 73 },
