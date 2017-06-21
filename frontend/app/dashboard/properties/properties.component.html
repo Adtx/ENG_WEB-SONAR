@@ -20,13 +20,13 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Mínimo</label>
-                                <input type="text" class="form-control" placeholder="Mínimo" value="{{this.selectedSensor.minimum}}">
+                                <input type="text" class="form-control" placeholder="Mínimo" value="{{this.selectedSensor.minimumNoise}}">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Máximo</label>
-                                <input type="text" class="form-control" placeholder="Máximo" value="{{this.selectedSensor.maximum}}">
+                                <input type="text" class="form-control" placeholder="Máximo" value="{{this.selectedSensor.maximumNoise}}">
                             </div>
                         </div>
                     </div>
@@ -38,7 +38,7 @@
         </div>
 
 
-        <div class="card"  *ngIf="selectedSensorGroup!='all'">
+        <!--<div class="card"  *ngIf="selectedSensorGroup!='all'">
             <div class="header">
                 <h4 class="title">Lista de sensores</h4>
                 <p class="category">Grupo&#x0003A; {{selectedSensorGroup}}</p>
@@ -57,11 +57,11 @@
                         </thead>
                         <tbody>
                             <tr *ngFor="let sensor of sensors">
-                                <td>{{sensor.id}}</td>
-                                <td>{{sensor.group}}</td>
-                                <td class="text-right">{{sensor.latency}}</td>
-                                <td class="text-right">{{sensor.minimum}}</td>
-                                <td class="text-right">{{sensor.maximum}}</td>
+                                <td>{{sensor.new_id}}</td>
+                                <td>{{sensor.group_name}}</td>
+                                <td class="text-right">{{sensor.frequency}}</td>
+                                <td class="text-right">{{sensor.minimumNoise}}</td>
+                                <td class="text-right">{{sensor.maximumNoise}}</td>
                                 <td class="td-actions text-right">
                                     <button type="button" rel="tooltip" title="Editar" class="btn btn-success btn-simple btn-xs">
                                         <i class="fa fa-edit"></i>
@@ -75,7 +75,7 @@
                     </table>
                 </div>
             </div>
-        </div>
+        </div>-->
 
 
         <div class="card">
@@ -97,14 +97,15 @@
                         </thead>
                         <tbody>
                             <tr *ngFor="let sensor of sensors">
-                                <td>{{sensor.id}}</td>
-                                <td>{{sensor.group}}</td>
-                                <td class="text-right">{{sensor.latency}}</td>
-                                <td class="text-right">{{sensor.minimum}}</td>
-                                <td class="text-right">{{sensor.maximum}}</td>
+                                <td>{{sensor.new_id}}</td>
+                                <td>{{sensor.group_name}}</td>
+                                <td class="text-right">{{sensor.frequency}}</td>
+                                <td class="text-right">{{sensor.minimumNoise}}</td>
+                                <td class="text-right">{{sensor.maximumNoise}}</td>
                                 <td class="td-actions text-right">
                                     <button type="button" rel="tooltip" title="Editar" class="btn btn-success btn-simple btn-xs">
-                                        <i class="fa fa-edit"></i>
+                                        <a routerLink="/properties/{{sensor.group_name}}/{{sensor.new_id}}">
+                                        <i class="fa fa-edit"></i></a>
                                     </button>
                                     <button type="button" rel="tooltip" title="Remover" class="btn btn-danger btn-simple btn-xs">
                                         <i class="fa fa-times"></i>

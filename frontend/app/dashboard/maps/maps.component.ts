@@ -47,7 +47,13 @@ export class MapsComponent implements OnInit {
                 var marker, i;
 
                 for (let sensor of this.sensors){
-                    locations.push([sensor.id.toString(), (-33.790542)+Math.random()/20, 151.274856+Math.random()/20]);
+                    //locations.push([sensor.new_id.toString(), (-33.790542)+Math.random()/20, 151.274856+Math.random()/20]);
+                    if (sensor.latitude!=null){
+                        locations.push([sensor.new_id.toString(), sensor.latitude, sensor.latitude]);
+                    }
+                    else{
+                        locations.push([sensor.new_id.toString(), (-33.790542)+Math.random()/20, 151.274856+Math.random()/20]);
+                    }
                 }    
                 /*            
                 for (let location of locations){

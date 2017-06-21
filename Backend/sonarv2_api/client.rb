@@ -13,7 +13,7 @@ print 'MAX: '
 maxNoise = gets.chomp.to_i
 
 print 'INTERIOR OU EXTERIOR: '
-dentroOuFora = gets.chomp.to_i
+dentroOuFora = gets.chomp
 
 if(dentroOuFora == 'interior') 
   latitude = nil
@@ -22,8 +22,10 @@ if(dentroOuFora == 'interior')
   location = gets.chomp.to_i
 else 
   location = nil
-  latitude = rand(-200.000..200.000)
-  longitude = rand(-200.000..200.000)
+  latitude = (-33.790542)+rand/20
+  longitude = (-33.790542)+rand/20
+  puts latitude
+  puts longitude
 end
 
 print 'NOME DO GRUPO: '

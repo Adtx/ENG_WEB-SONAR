@@ -16,7 +16,7 @@ class XDK
 		@position = new_position
     end
 
-	def initialize(id,location,frequency, minNoise, maxNoise, group_name, latitude, longitude)
+	def initialize(new_id,location,frequency, minNoise, maxNoise, group_name, latitude, longitude)
 		@new_id = new_id
 		@location = location
 		@noise_thread = nil
@@ -35,7 +35,7 @@ class XDK
 		options = {
 				  body: {
 				    sensor: { # your resource
-				    	new_id: @new_id,
+				      new_id: @new_id,
 				      location: @location,
 				      frequency: @frequency, # your columns/data
 				      minimumNoise: @minNoise,

@@ -45,23 +45,22 @@
                                     <table class="table">
                                         <thead>
                                             <tr>
-                                                <th class="text-center">Id</th>
-                                                <th>Grupo</th>
+                                                <th >Sensor</th>
+                                                <!--<th>Grupo</th>-->
                                                 <th>Valor</th>
-                                                <th style="color:white">SPACE</th>
+                                                <!--<th style="color:white">SPACE</th>-->
                                                 <th >Data</th>
-                                                <th >Localização</th>
+                                                <!--<th >Localização</th>-->
                                                 <!--<th class="text-right">Ações</th>-->
                                             </tr>
                                         </thead>
                                         <tbody>
-                                             <tr *ngFor="let sensor of sensors">
-                                                <td class="text-center">{{sensor.id}}</td>
-                                                <td>{{sensor.title}}</td>
-                                                <td>11</td>
-                                                <td></td>
-                                                <td >09:25:19 (12/05)</td>
-                                                <td >41.5599005, -8.3988118</td>
+                                             <tr *ngFor="let reading of readings">
+                                                <td >{{reading.sensor_id}}</td>
+                                                <!--<td>-</td>-->
+                                                <td>{{reading.noise}}</td>
+                                                <td >{{reading.timestamp.slice(11, reading.timestamp.length-5)}} ({{reading.timestamp.slice(0, 10)}})</td>
+                                                <!--<td >41.5599005, -8.3988118</td>-->
                                                 <!--<td class="td-actions text-right">
                                                     <button type="button" rel="tooltip" title="Editar" class="btn btn-success btn-simple btn-xs">
                                                         <i class="fa fa-edit"></i>
@@ -215,10 +214,10 @@
                             <table class="table">
                                 <tbody>
                                     <tr *ngFor="let sensor of sensors">
-                                        <td><a href="#">{{sensor.id}} ({{sensor.title}})</a></td>
+                                        <td><a href="#">{{sensor.new_id}} ({{sensor.group_name}})</a></td>
                                         <td class="td-actions text-right">
                                             <button type="button" rel="tooltip" title="Editar" class="btn btn-info btn-simple btn-xs">
-                                                <a routerLink="../properties/{{sensor.title}}/{{sensor.id}}">
+                                                <a routerLink="../properties">
                                                 <i class="fa fa-edit"></i></a>
                                             </button>
                                             <button type="button" rel="tooltip" title="Mapa" class="btn btn-danger btn-simple btn-xs">

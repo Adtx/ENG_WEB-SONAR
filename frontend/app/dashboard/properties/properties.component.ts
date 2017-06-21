@@ -69,13 +69,23 @@ export class PropertiesComponent implements OnInit, OnDestroy {
                 this.selectedSensorId = params['id'];
                 this.selectedSensorGroup = params['group'];
             });
-            this.sensorService.getSensors().then(sensors => this.sensors = sensors);
+
+            this.sensorService.getSensorsRest()
+            .subscribe(sensors => this.sensors = sensors);
+
+            /*this.sensorService.getSensorRest(this.selectedSensorId)
+            .subscribe(sensor => {this.selectedSensor = sensor; 
+                                alert(sensor.maximumNoise);});*/
+
+            
+
+            //.then(sensors => this.sensors = sensors);
             /*for (var i=0; i<this.sensors.length; i++){
                 if (this.sensors[i].id == this.selectedSensorId && this.sensors[i].group == this.selectedSensorGroup){
                     this.selectedSensor = this.sensors[i];
                 }
             }*/
-            this.selectedSensor = {id: 'Café Juno', group: 'Centro histórico', latency: 4, minimum: 42, maximum: 107};
+            //this.selectedSensor = {id: 'Café Juno', group: 'Centro histórico', latency: 4, minimum: 42, maximum: 107};
         }
 
         ngOnDestroy() {
