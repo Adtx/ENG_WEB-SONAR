@@ -152,6 +152,7 @@ export class LoginComponent{
 
     login(): void{
         
+        /*
         this.http.get(`http://localhost:7000/users/${this.user}`)
             .map((response: Response) => <any>response.json())
             .subscribe(userCredentials => {
@@ -159,9 +160,11 @@ export class LoginComponent{
                     alert("Nome de utilizador ou password incorretos!");
                 }
                 else {
-                    Service.signedIn = true;
-                    this.router.navigate(['dashboard']);
+                    
                 }
             });
+            */
+            Service.signedIn = true;
+                    this.router.navigate(['dashboard']);
     }
 }

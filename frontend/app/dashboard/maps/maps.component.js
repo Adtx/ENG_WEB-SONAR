@@ -26,7 +26,7 @@ var MapsComponent = (function () {
                 var sensor = _a[_i];
                 //locations.push([sensor.new_id.toString(), (-33.790542)+Math.random()/20, 151.274856+Math.random()/20]);
                 if (sensor.latitude != null) {
-                    locations.push([sensor.new_id.toString(), sensor.latitude, sensor.longitude]);
+                    locations.push([sensor.new_id.toString(), sensor.group_name, sensor.latitude, sensor.longitude]);
                 }
                 /*else{
                     alert(sensor.new_id);
@@ -35,7 +35,7 @@ var MapsComponent = (function () {
             }
             var map = new google.maps.Map(document.getElementById('map'), {
                 zoom: 12,
-                center: new google.maps.LatLng(locations[0][1], locations[0][2]),
+                center: new google.maps.LatLng(locations[0][2], locations[0][3]),
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             });
             var infowindow = new google.maps.InfoWindow();
@@ -47,13 +47,13 @@ var MapsComponent = (function () {
             */
             for (i = 0; i < locations.length; i++) {
                 marker = new google.maps.Marker({
-                    position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-                    title: 'Sensor: ' + locations[i][0] + '\nLatitude: ' + locations[i][1] + '\nLongitude: ' + locations[i][2],
+                    position: new google.maps.LatLng(locations[i][2], locations[i][3]),
+                    title: 'Sensor: ' + locations[i][0] + '\nGrupo: ' + locations[i][1] + '\nLatitude: ' + locations[i][2] + '\nLongitude: ' + locations[i][3],
                     map: map
                 });
                 google.maps.event.addListener(marker, 'click', (function (marker, i) {
                     return function () {
-                        infowindow.setContent('Sensor: ' + locations[i][0] + '<br>Latitude: ' + locations[i][1] + '<br>Longitude: ' + locations[i][2]);
+                        infowindow.setContent('Sensor: ' + locations[i][0] + '<br>Grupo: ' + locations[i][1] + '<br>Latitude: ' + locations[i][2] + '<br>Longitude: ' + locations[i][3]);
                         infowindow.open(map, marker);
                     };
                 })(marker, i));

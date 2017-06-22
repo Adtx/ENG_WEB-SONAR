@@ -1,14 +1,22 @@
 <div class="wrapper">
     <div class="sidebar" data-color="blue" data-image="">
 
+        <!--CUIDADO LOGIN-->
         <!--<sidebar-cmp *ngIf="this.loggedIn"></sidebar-cmp>-->
         <sidebar-cmp></sidebar-cmp>
         
         <div class="sidebar-background" style="background-image: url(/assets/img/sidebar-2.jpg)"></div>
     </div>
 
+    <!--CUIDADO LOGIN-->
+    <navbar-cmp class="navbar-cmp-fixed"></navbar-cmp>
+    <!--<navbar-cmp *ngIf="this.loggedIn"></navbar-cmp>-->
+
     <div class="main-panel">
-        <navbar-cmp *ngIf="this.loggedIn"></navbar-cmp>
+        
+        <!--CUIDADO LOGIN-->
+        <!--<navbar-cmp *ngIf="this.loggedIn"></navbar-cmp>-->
+
         <dashboard-cmp (signIn)="this.loggedIn=true"></dashboard-cmp>
         <div *ngIf="!isMaps('/maps')">
             <footer-cmp *ngIf="this.loggedIn"></footer-cmp>
