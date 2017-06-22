@@ -1,4 +1,5 @@
 import {Component, OnInit,AfterViewInit,trigger,state,style,transition,animate,keyframes} from '@angular/core';
+import { AlertService } from '../../alert.service'
 
 @Component({
     moduleId: module.id,
@@ -27,8 +28,13 @@ import {Component, OnInit,AfterViewInit,trigger,state,style,transition,animate,k
     ]
 })
 
-export class NotificationsComponent{ 
+export class NotificationsComponent implements OnInit{ 
 
-    
+    alertas: string[];
 
+    ngOnInit() {
+        //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+        //Add 'implements OnInit' to the class.
+        this.alertas =  AlertService.alerts;
+    }
 }

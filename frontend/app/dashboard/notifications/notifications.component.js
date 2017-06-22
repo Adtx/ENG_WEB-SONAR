@@ -9,9 +9,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var alert_service_1 = require('../../alert.service');
 var NotificationsComponent = (function () {
     function NotificationsComponent() {
     }
+    NotificationsComponent.prototype.ngOnInit = function () {
+        //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+        //Add 'implements OnInit' to the class.
+        this.alertas = alert_service_1.AlertService.alerts;
+    };
     NotificationsComponent = __decorate([
         core_1.Component({
             moduleId: module.id,

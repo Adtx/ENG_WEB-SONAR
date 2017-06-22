@@ -14,11 +14,13 @@ var sensor_service_1 = require('../../sensor.service');
 var http_1 = require('@angular/http');
 require('rxjs/add/operator/toPromise');
 require('rxjs/add/operator/map');
+var alert_service_1 = require('../../alert.service');
 var HomeComponent = (function () {
     function HomeComponent(sensorService, http) {
         this.sensorService = sensorService;
         this.http = http;
         this.myMap = new Map();
+        this.sensorsMap = {};
     }
     HomeComponent.prototype.ngOnInit = function () {
         // $.getScript('../../../assets/js/bootstrap-checkbox-radio-switch.js');
@@ -36,12 +38,24 @@ var HomeComponent = (function () {
         /*this.sensorService.getSensorsRest()
             .subscribe(sensors => this.sensors = sensors);*/
         this.sensorService.getSensorsRest()
-            .subscribe(function (sensors) { return _this.sensors = sensors; });
-        this.sensorService.getReadingsRest()
-            .subscribe(function (readings) { return _this.readings = readings.reverse(); });
-        /*.map((response: Response) => <any[]>response.json())
-        .expand(() => Observable.timer(1000).concatMap(() => data))
-        .subscribe(readings => this.readings = readings.reverse());*/
+            .subscribe(function (sensors) {
+            _this.sensors = sensors;
+            for (var _i = 0, sensors_1 = sensors; _i < sensors_1.length; _i++) {
+                var sensor = sensors_1[_i];
+                _this.sensorsMap[sensor.new_id] = sensor;
+            }
+            _this.sensorService.getReadingsRest()
+                .subscribe(function (readings) {
+                _this.readings = readings.slice(-5).reverse();
+                for (var _i = 0, _a = _this.readings; _i < _a.length; _i++) {
+                    var reading = _a[_i];
+                    if (reading.noise < _this.sensorsMap[reading.sensor_id].minimumNoise || reading.noise > _this.sensorsMap[reading.sensor_id].maximumNoise) {
+                        //console.log('ALERTA!!!!!!!!' + reading.noise + ' ' + this.sensorsMap[reading.sensor_id].minimumNoise + ' ' + this.sensorsMap[reading.sensor_id].maximumNoise)
+                        alert_service_1.AlertService.add("SENSOR " + reading.sensor_id + ": leitura = " + reading.noise + "   intervalo = [" + _this.sensorsMap[reading.sensor_id].minimumNoise + "," + _this.sensorsMap[reading.sensor_id].maximumNoise + "]");
+                    }
+                }
+            });
+        });
     };
     HomeComponent.prototype.getSensor = function (id) {
         return this.myMap.get(id);

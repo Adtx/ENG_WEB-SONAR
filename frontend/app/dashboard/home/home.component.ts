@@ -10,6 +10,7 @@ import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map'
 
 import { Observable } from 'rxjs';
+import { AlertService } from '../../alert.service'
 
 declare var $:any;
 
@@ -105,6 +106,7 @@ export class HomeComponent implements OnInit{
     sensors: any[];
     readings: any[];
     myMap = new Map<string, Sensor>();
+    sensorsMap: {[sensor_id:string]:{id: number, new_id: number, location: string, frequency: number, minimumNoise: number, maximumNoise: number, latitude: number, longitude: number, group_name: string}} = {};
 
 
     ngOnInit() {
@@ -126,17 +128,23 @@ export class HomeComponent implements OnInit{
             .subscribe(sensors => this.sensors = sensors);*/
 
         this.sensorService.getSensorsRest()
-            .subscribe(sensors => this.sensors = sensors);
+            .subscribe(sensors => {
+                this.sensors = sensors
+                for(let sensor of sensors)
+                    this.sensorsMap[sensor.new_id] = sensor;
+                this.sensorService.getReadingsRest()
+                .subscribe(readings => {
+                    this.readings = readings.slice(-5).reverse();
+                    for(let reading of this.readings){
+                        if(reading.noise < this.sensorsMap[reading.sensor_id].minimumNoise || reading.noise > this.sensorsMap[reading.sensor_id].maximumNoise){
+                            //console.log('ALERTA!!!!!!!!' + reading.noise + ' ' + this.sensorsMap[reading.sensor_id].minimumNoise + ' ' + this.sensorsMap[reading.sensor_id].maximumNoise)
+                            AlertService.add(`SENSOR ${reading.sensor_id}: leitura = ${reading.noise}   intervalo = [${this.sensorsMap[reading.sensor_id].minimumNoise},${this.sensorsMap[reading.sensor_id].maximumNoise}] + timestamp = ${reading.timestamp}`);
+                        }
+                        //console.log(reading.noise + ' ' + this.sensorsMap[reading.sensor_id].minimumNoise + ' ' + this.sensorsMap[reading.sensor_id].maximumNoise)
+                    }
 
-        this.sensorService.getReadingsRest()
-                .subscribe(readings => this.readings = readings.reverse())
-
-
-
-
-            /*.map((response: Response) => <any[]>response.json())
-            .expand(() => Observable.timer(1000).concatMap(() => data))
-            .subscribe(readings => this.readings = readings.reverse());*/
+                })
+            });
     }
 
     getSensor(id: string): Sensor{

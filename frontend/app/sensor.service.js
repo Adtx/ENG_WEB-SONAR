@@ -8,12 +8,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var mock_sensors_1 = require("./mock-sensors");
-var http_1 = require("@angular/http");
-require("rxjs/add/operator/toPromise");
-require("rxjs/add/operator/map");
+var core_1 = require('@angular/core');
+var mock_sensors_1 = require('./mock-sensors');
+var http_1 = require('@angular/http');
+require('rxjs/add/operator/toPromise');
+require('rxjs/add/operator/map');
+var rxjs_1 = require('rxjs');
 var SensorService = (function () {
     function SensorService(http) {
         this.http = http;
@@ -39,15 +39,22 @@ var SensorService = (function () {
         return res;
     };
     SensorService.prototype.getReadingsRest = function () {
-        var res = this.http.get("http://localhost:5000/readings")
-            .map(function (response) { return response.json(); });
-        return res;
+        var _this = this;
+        return rxjs_1.Observable
+            .interval(1000)
+            .flatMap(function () {
+            return _this.http.get("http://localhost:5000/readings")
+                .map(function (response) { return response.json(); });
+        });
+        /*var res = this.http.get(`http://localhost:7000/readings`)
+             .map((response: Response) => <any[]>response.json());
+         return res;*/
     };
+    SensorService = __decorate([
+        core_1.Injectable(), 
+        __metadata('design:paramtypes', [http_1.Http])
+    ], SensorService);
     return SensorService;
 }());
-SensorService = __decorate([
-    core_1.Injectable(),
-    __metadata("design:paramtypes", [http_1.Http])
-], SensorService);
 exports.SensorService = SensorService;
 //# sourceMappingURL=sensor.service.js.map

@@ -27,10 +27,6 @@ var MapsComponent = (function () {
                 if (sensor.latitude != null) {
                     locations.push([sensor.new_id.toString(), sensor.group_name, sensor.latitude, sensor.longitude]);
                 }
-                /*else{
-                    alert(sensor.new_id);
-                    locations.push([sensor.new_id.toString(), (-33.790542)+Math.random()/20, 151.274856+Math.random()/20]);
-                }*/
             }
             var map = new google.maps.Map(document.getElementById('map'), {
                 zoom: 12,
