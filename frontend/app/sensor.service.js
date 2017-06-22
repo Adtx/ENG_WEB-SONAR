@@ -34,12 +34,12 @@ var SensorService = (function () {
         return res;
     }*/
     SensorService.prototype.getSensorsRest = function () {
-        var res = this.http.get("http://localhost:7000/sensors")
+        var res = this.http.get("http://localhost:5000/sensors")
             .map(function (response) { return response.json(); });
         return res;
     };
     SensorService.prototype.getReadingsRest = function () {
-        var res = this.http.get("http://localhost:7000/readings")
+        var res = this.http.get("http://localhost:5000/readings")
             .map(function (response) { return response.json(); });
         return res;
     };

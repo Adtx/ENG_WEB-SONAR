@@ -19,7 +19,7 @@ if(dentroOuFora == 'interior')
   latitude = nil
   longitude = nil
   print 'LOCALIZAÇÃO: '
-  location = gets.chomp.to_i
+  location = gets.chomp
 else 
   location = nil
   latitude = (-33.790542)+rand/20

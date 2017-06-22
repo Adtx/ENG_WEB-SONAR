@@ -90,6 +90,7 @@
                             <tr>
                                 <th>Id</th>
                                 <th>Grupo</th>
+                                <th>Localização</th>
                                 <th class="text-right">Latência</th>
                                 <th class="text-right">Mínimo</th>
                                 <th class="text-right">Máximo</th>
@@ -99,6 +100,7 @@
                             <tr *ngFor="let sensor of sensors">
                                 <td>{{sensor.new_id}}</td>
                                 <td>{{sensor.group_name}}</td>
+                                <td>{{sensor.latitude ? sensor.latitude + ' , ' : sensor.location}} {{sensor.longitude ? sensor.longitude : ''}}</td>
                                 <td class="text-right">{{sensor.frequency}}</td>
                                 <td class="text-right">{{sensor.minimumNoise}}</td>
                                 <td class="text-right">{{sensor.maximumNoise}}</td>

@@ -47,7 +47,7 @@ class XDK
 				  }
 				}
 
-		HTTParty.post('http://localhost:7000/sensors', options)
+		HTTParty.post('http://localhost:5000/sensors', options)
 	end
 
 	def stop_sensor()
@@ -71,7 +71,7 @@ class XDK
 				  }
 				}
 
-				HTTParty.post('http://localhost:7000/readings', options)
+				HTTParty.post('http://localhost:5000/readings', options)
 
 				sleep(sleep_time)
 			}

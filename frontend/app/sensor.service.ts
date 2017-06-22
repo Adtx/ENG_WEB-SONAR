@@ -34,13 +34,13 @@ export class SensorService {
     }*/
 
     getSensorsRest(): Observable<any[]>{
-       var res = this.http.get(`http://localhost:7000/sensors`)
+       var res = this.http.get(`http://localhost:5000/sensors`)
             .map((response: Response) => <any[]>response.json());
         return res;
     }
 
     getReadingsRest(): Observable<any[]>{
-       var res = this.http.get(`http://localhost:7000/readings`)
+       var res = this.http.get(`http://localhost:5000/readings`)
             .map((response: Response) => <any[]>response.json());
         return res;
     }

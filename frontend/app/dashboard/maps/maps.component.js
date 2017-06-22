@@ -20,24 +20,26 @@ var MapsComponent = (function () {
         this.sensorService.getSensorsRest()
             .subscribe(function (sensors) {
             _this.sensors = sensors;
+            var myCenter;
             var locations = [];
-            var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 12,
-                center: new google.maps.LatLng((-33.790542) + Math.random() / 20, 151.274856 + Math.random() / 20),
-                mapTypeId: google.maps.MapTypeId.ROADMAP
-            });
-            var infowindow = new google.maps.InfoWindow();
-            var marker, i;
             for (var _i = 0, _a = _this.sensors; _i < _a.length; _i++) {
                 var sensor = _a[_i];
                 //locations.push([sensor.new_id.toString(), (-33.790542)+Math.random()/20, 151.274856+Math.random()/20]);
                 if (sensor.latitude != null) {
-                    locations.push([sensor.new_id.toString(), sensor.latitude, sensor.latitude]);
+                    locations.push([sensor.new_id.toString(), sensor.latitude, sensor.longitude]);
                 }
-                else {
-                    locations.push([sensor.new_id.toString(), (-33.790542) + Math.random() / 20, 151.274856 + Math.random() / 20]);
-                }
+                /*else{
+                    alert(sensor.new_id);
+                    locations.push([sensor.new_id.toString(), (-33.790542)+Math.random()/20, 151.274856+Math.random()/20]);
+                }*/
             }
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 12,
+                center: new google.maps.LatLng(locations[0][1], locations[0][2]),
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            });
+            var infowindow = new google.maps.InfoWindow();
+            var marker, i;
             /*
             for (let location of locations){
                 alert(location);
