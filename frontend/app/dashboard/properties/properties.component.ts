@@ -2,6 +2,9 @@ import { Component,OnInit,OnDestroy,state,style,animate,transition, trigger, key
 import { ActivatedRoute, Params }   from '@angular/router';
 import { Location }                 from '@angular/common';
 
+import { Http, Response } from '@angular/http';
+import { Headers, RequestOptions } from '@angular/http';
+
 import { Sensor } from '../../sensor';
 import { SensorService } from '../../sensor.service';
 
@@ -92,10 +95,31 @@ export class PropertiesComponent implements OnInit, OnDestroy {
             this.sub.unsubscribe();
         }
 
+        updateSensor(min, max){ 
+   
+           let data = {
+              minimumNoise: min,
+              maximumNoise: max
+          }
+
+          console.log(data);
+          alert("Hi");
+          let headers = new Headers({ 'Content-Type': 'application/json' });
+          let options = new RequestOptions({ headers: headers });
+          return this.http.put(`http://localhost:5000/sensors/${this.selectedSensorId}`, JSON.stringify(data), options)
+                     .map(res => res.json())
+                     .subscribe();
+
+        }
+
+
+
+
         constructor(
             private route: ActivatedRoute,
             private location: Location,
-            private sensorService: SensorService
+            private sensorService: SensorService,
+            private http:Http
         ) {}
 
     }
