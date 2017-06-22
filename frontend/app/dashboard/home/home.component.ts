@@ -2,9 +2,14 @@ import {Component, OnInit,trigger,state,style,transition,animate,keyframes, grou
 import initDemo = require('../../../assets/js/charts.js');
 import initNotify = require('../../../assets/js/notify.js');
 
-
 import { Sensor } from '../../sensor';
 import { SensorService } from '../../sensor.service';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
+
+import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/map'
+
+import { Observable } from 'rxjs';
 
 declare var $:any;
 
@@ -124,7 +129,14 @@ export class HomeComponent implements OnInit{
             .subscribe(sensors => this.sensors = sensors);
 
         this.sensorService.getReadingsRest()
-            .subscribe(readings => this.readings = readings.reverse());
+                .subscribe(readings => this.readings = readings.reverse())
+
+
+
+
+            /*.map((response: Response) => <any[]>response.json())
+            .expand(() => Observable.timer(1000).concatMap(() => data))
+            .subscribe(readings => this.readings = readings.reverse());*/
     }
 
     getSensor(id: string): Sensor{
@@ -132,5 +144,5 @@ export class HomeComponent implements OnInit{
     }
 
 
-    constructor(private sensorService: SensorService) {}
+    constructor(private sensorService: SensorService, private http: Http) {}
 }

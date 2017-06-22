@@ -8,12 +8,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var sidebar_routes_config_1 = require("../.././sidebar/sidebar-routes.config");
-var common_1 = require("@angular/common");
-var service_1 = require("../../shared/service");
-var router_1 = require("@angular/router");
+var core_1 = require('@angular/core');
+var sidebar_routes_config_1 = require('../.././sidebar/sidebar-routes.config');
+var common_1 = require('@angular/common');
+var service_1 = require('../../shared/service');
+var router_1 = require('@angular/router');
 var NavbarComponent = (function () {
     function NavbarComponent(location, router) {
         this.router = router;
@@ -40,15 +39,15 @@ var NavbarComponent = (function () {
         service_1.Service.signedIn = false;
         this.router.navigate(['login']);
     };
+    NavbarComponent = __decorate([
+        core_1.Component({
+            moduleId: module.id,
+            selector: 'navbar-cmp',
+            templateUrl: 'navbar.component.html'
+        }), 
+        __metadata('design:paramtypes', [common_1.Location, router_1.Router])
+    ], NavbarComponent);
     return NavbarComponent;
 }());
-NavbarComponent = __decorate([
-    core_1.Component({
-        moduleId: module.id,
-        selector: 'navbar-cmp',
-        templateUrl: 'navbar.component.html'
-    }),
-    __metadata("design:paramtypes", [common_1.Location, router_1.Router])
-], NavbarComponent);
 exports.NavbarComponent = NavbarComponent;
 //# sourceMappingURL=navbar.component.js.map

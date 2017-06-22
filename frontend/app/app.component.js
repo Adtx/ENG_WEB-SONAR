@@ -8,10 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var common_1 = require("@angular/common");
-var service_1 = require("./shared/service");
+var core_1 = require('@angular/core');
+var common_1 = require('@angular/common');
+var service_1 = require('./shared/service');
 var AppComponent = (function () {
     function AppComponent(location /*, private service: Service*/) {
         this.loggedIn = false;
@@ -36,14 +35,14 @@ var AppComponent = (function () {
             return false;
         }
     };
+    AppComponent = __decorate([
+        core_1.Component({
+            selector: 'my-app',
+            templateUrl: 'app/app.component.html'
+        }), 
+        __metadata('design:paramtypes', [common_1.Location])
+    ], AppComponent);
     return AppComponent;
 }());
-AppComponent = __decorate([
-    core_1.Component({
-        selector: 'my-app',
-        templateUrl: 'app/app.component.html'
-    }),
-    __metadata("design:paramtypes", [common_1.Location /*, private service: Service*/])
-], AppComponent);
 exports.AppComponent = AppComponent;
 //# sourceMappingURL=app.component.js.map

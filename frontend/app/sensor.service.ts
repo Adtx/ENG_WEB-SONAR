@@ -40,9 +40,17 @@ export class SensorService {
     }
 
     getReadingsRest(): Observable<any[]>{
-       var res = this.http.get(`http://localhost:5000/readings`)
+
+        return Observable
+                .interval(1000)
+                .flatMap(() => {
+                    return this.http.get(`http://localhost:5000/readings`)
+                                    .map((response: Response) => <any[]>response.json());
+                });
+
+       /*var res = this.http.get(`http://localhost:7000/readings`)
             .map((response: Response) => <any[]>response.json());
-        return res;
+        return res;*/
     }
 
 }
