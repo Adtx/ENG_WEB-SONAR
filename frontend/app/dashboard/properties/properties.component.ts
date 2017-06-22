@@ -120,6 +120,8 @@ export class PropertiesComponent implements OnInit, OnDestroy {
           return this.http.delete(`http://localhost:5000/sensors/${new_id}`, options)
                   .map(res => res.json())
                   .subscribe();
+
+
         }
 
 

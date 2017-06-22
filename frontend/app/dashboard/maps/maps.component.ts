@@ -28,7 +28,7 @@ export class MapsComponent implements OnInit {
 
     ngOnInit() {
 
-        this.sensorService.getSensorsRest()
+        this.sensorService.getSensorsMapRest()
             .subscribe(sensors => {                
             
             
