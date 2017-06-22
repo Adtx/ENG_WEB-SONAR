@@ -109,7 +109,7 @@
                                         <a routerLink="/properties/{{sensor.group_name}}/{{sensor.new_id}}">
                                         <i class="fa fa-edit"></i></a>
                                     </button>
-                                    <button type="button" rel="tooltip" title="Remover" class="btn btn-danger btn-simple btn-xs">
+                                    <button (click)="deleteSensor(sensor.new_id)" type="button" rel="tooltip" title="Remover" class="btn btn-danger btn-simple btn-xs">
                                         <i class="fa fa-times"></i>
                                     </button>
                                 </td>

@@ -103,13 +103,23 @@ export class PropertiesComponent implements OnInit, OnDestroy {
           }
 
           console.log(data);
-          alert("Hi");
+
           let headers = new Headers({ 'Content-Type': 'application/json' });
           let options = new RequestOptions({ headers: headers });
           return this.http.put(`http://localhost:5000/sensors/${this.selectedSensorId}`, JSON.stringify(data), options)
                      .map(res => res.json())
                      .subscribe();
 
+
+        }
+
+        deleteSensor(new_id){
+          alert(new_id);
+          let headers = new Headers({ 'Content-Type': 'application/json' });
+          let options = new RequestOptions({ headers: headers });
+          return this.http.delete(`http://localhost:5000/sensors/${new_id}`, options)
+                  .map(res => res.json())
+                  .subscribe();
         }
 
 
