@@ -134,10 +134,10 @@ export class HomeComponent implements OnInit{
                     this.sensorsMap[sensor.new_id] = sensor;
                 this.sensorService.getReadingsRest()
                 .subscribe(readings => {
-                    this.readings = readings.slice(-5).reverse();
+                    this.readings = readings.reverse();
                     for(let reading of this.readings){
                         if(reading.noise < this.sensorsMap[reading.sensor_id].minimumNoise || reading.noise > this.sensorsMap[reading.sensor_id].maximumNoise){
-                            //console.log('ALERTA!!!!!!!!' + reading.noise + ' ' + this.sensorsMap[reading.sensor_id].minimumNoise + ' ' + this.sensorsMap[reading.sensor_id].maximumNoise)
+                            console.log('ALERTA!!!!!!!!' + reading.noise + ' ' + this.sensorsMap[reading.sensor_id].minimumNoise + ' ' + this.sensorsMap[reading.sensor_id].maximumNoise)
                             AlertService.add(`SENSOR ${reading.sensor_id}: leitura = ${reading.noise}   intervalo = [${this.sensorsMap[reading.sensor_id].minimumNoise},${this.sensorsMap[reading.sensor_id].maximumNoise}] + timestamp = ${reading.timestamp}`);
                         }
                         //console.log(reading.noise + ' ' + this.sensorsMap[reading.sensor_id].minimumNoise + ' ' + this.sensorsMap[reading.sensor_id].maximumNoise)

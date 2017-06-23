@@ -9,7 +9,7 @@ export class AlertService {
     constructor() { }
 
     public static add(alertMessage: string) {
-        alert(alertMessage)
+        //alert(alertMessage)
        AlertService.alerts.concat([alertMessage]);
     }
 

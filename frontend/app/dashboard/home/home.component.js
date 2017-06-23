@@ -46,12 +46,12 @@ var HomeComponent = (function () {
             }
             _this.sensorService.getReadingsRest()
                 .subscribe(function (readings) {
-                _this.readings = readings.slice(-5).reverse();
+                _this.readings = readings.reverse();
                 for (var _i = 0, _a = _this.readings; _i < _a.length; _i++) {
                     var reading = _a[_i];
                     if (reading.noise < _this.sensorsMap[reading.sensor_id].minimumNoise || reading.noise > _this.sensorsMap[reading.sensor_id].maximumNoise) {
-                        //console.log('ALERTA!!!!!!!!' + reading.noise + ' ' + this.sensorsMap[reading.sensor_id].minimumNoise + ' ' + this.sensorsMap[reading.sensor_id].maximumNoise)
-                        alert_service_1.AlertService.add("SENSOR " + reading.sensor_id + ": leitura = " + reading.noise + "   intervalo = [" + _this.sensorsMap[reading.sensor_id].minimumNoise + "," + _this.sensorsMap[reading.sensor_id].maximumNoise + "]");
+                        console.log('ALERTA!!!!!!!!' + reading.noise + ' ' + _this.sensorsMap[reading.sensor_id].minimumNoise + ' ' + _this.sensorsMap[reading.sensor_id].maximumNoise);
+                        alert_service_1.AlertService.add("SENSOR " + reading.sensor_id + ": leitura = " + reading.noise + "   intervalo = [" + _this.sensorsMap[reading.sensor_id].minimumNoise + "," + _this.sensorsMap[reading.sensor_id].maximumNoise + "] + timestamp = " + reading.timestamp);
                     }
                 }
             });

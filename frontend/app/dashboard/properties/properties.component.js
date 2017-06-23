@@ -11,13 +11,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 var common_1 = require('@angular/common');
+var http_1 = require('@angular/http');
+var http_2 = require('@angular/http');
 var sensor_service_1 = require('../../sensor.service');
 require('rxjs/add/operator/switchMap');
 var PropertiesComponent = (function () {
-    function PropertiesComponent(route, location, sensorService) {
+    function PropertiesComponent(route, location, sensorService, http) {
         this.route = route;
         this.location = location;
         this.sensorService = sensorService;
+        this.http = http;
     }
     PropertiesComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -40,6 +43,25 @@ var PropertiesComponent = (function () {
     };
     PropertiesComponent.prototype.ngOnDestroy = function () {
         this.sub.unsubscribe();
+    };
+    PropertiesComponent.prototype.updateSensor = function (min, max) {
+        var data = {
+            minimumNoise: min,
+            maximumNoise: max
+        };
+        console.log(data);
+        var headers = new http_2.Headers({ 'Content-Type': 'application/json' });
+        var options = new http_2.RequestOptions({ headers: headers });
+        return this.http.put("http://localhost:5000/sensors/" + this.selectedSensorId, JSON.stringify(data), options)
+            .map(function (res) { return res.json(); })
+            .subscribe();
+    };
+    PropertiesComponent.prototype.deleteSensor = function (new_id) {
+        var headers = new http_2.Headers({ 'Content-Type': 'application/json' });
+        var options = new http_2.RequestOptions({ headers: headers });
+        return this.http.delete("http://localhost:5000/sensors/" + new_id, options)
+            .map(function (res) { return res.json(); })
+            .subscribe();
     };
     PropertiesComponent = __decorate([
         core_1.Component({
@@ -89,7 +111,7 @@ var PropertiesComponent = (function () {
                 ])
             ]
         }), 
-        __metadata('design:paramtypes', [router_1.ActivatedRoute, common_1.Location, sensor_service_1.SensorService])
+        __metadata('design:paramtypes', [router_1.ActivatedRoute, common_1.Location, sensor_service_1.SensorService, http_1.Http])
     ], PropertiesComponent);
     return PropertiesComponent;
 }());

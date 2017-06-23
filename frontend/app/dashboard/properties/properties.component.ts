@@ -114,7 +114,6 @@ export class PropertiesComponent implements OnInit, OnDestroy {
         }
 
         deleteSensor(new_id){
-          alert(new_id);
           let headers = new Headers({ 'Content-Type': 'application/json' });
           let options = new RequestOptions({ headers: headers });
           return this.http.delete(`http://localhost:5000/sensors/${new_id}`, options)

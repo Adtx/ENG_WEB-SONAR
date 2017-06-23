@@ -16,7 +16,7 @@ var MapsComponent = (function () {
     }
     MapsComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.sensorService.getSensorsRest()
+        this.sensorService.getSensorsMapRest()
             .subscribe(function (sensors) {
             _this.sensors = sensors;
             var myCenter;

@@ -34,6 +34,18 @@ var SensorService = (function () {
         return res;
     }*/
     SensorService.prototype.getSensorsRest = function () {
+        var _this = this;
+        return rxjs_1.Observable
+            .interval(1000)
+            .flatMap(function () {
+            return _this.http.get("http://localhost:5000/sensors")
+                .map(function (response) { return response.json(); });
+        });
+        // var res = this.http.get(`http://localhost:5000/sensors`)
+        //      .map((response: Response) => <any[]>response.json());
+        //  return res;
+    };
+    SensorService.prototype.getSensorsMapRest = function () {
         var res = this.http.get("http://localhost:5000/sensors")
             .map(function (response) { return response.json(); });
         return res;
