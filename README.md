@@ -1,1 +1,2 @@
-EngWeb 2017
+<h1>ENG_WEB: projeto 2 - SONAR</h1>
+<p>Neste projeto foi desenvolvida com Ruby on Rails a aplicação web SONAR (Sistema Operacional de Negação de Aumento de Ruído) e, também em Ruby, um simulador do dispositivo de sensores IOT da Bosch que envia as suas leituras para a primeira aplicação dando origem a uma plataforma que permite aos seus utilizadores monitorizar em tempo real as condições de ruído de vários espaços, definir a gama de valores aceitável para cada um deles, receber alertas quando essas condições ultrapassam a gama de valores esperada entre outras funcionalidades.</p>
